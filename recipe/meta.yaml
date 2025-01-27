@@ -1,21 +1,19 @@
 {% set name = "django-celery" %}
 {% set version = "3.3.1" %}
-{% set build = 1 %}
-{% set sha256 = "777220f032f0e12072bf457d5350b1318f5b8774e9cc6cc0ee645feb72d194bb" %}
+
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/celery/django-celery/archive/{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 777220f032f0e12072bf457d5350b1318f5b8774e9cc6cc0ee645feb72d194bb
 
 build:
-  number: {{ build }}
+  number: 1
   noarch: python
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
@@ -43,7 +41,7 @@ test:
 
 about:
   home: http://celeryproject.org
-  license: BSD 2-Clause
+  license: BSD-2-Clause
   license_file: LICENSE
   license_family: BSD
   summary: Old django celery integration project.
